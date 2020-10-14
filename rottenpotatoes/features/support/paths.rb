@@ -24,7 +24,12 @@ module NavigationHelpers
     when /^the edit page for "(.*)"$/
       edit_movie_path(Movie.find_by_title($1).id)
 
-
+    when /^the details page for "(.+)"$/
+      movie_path(Movie.find_by_title($1).id)
+      
+    when /^the Similar Movies page for "(.+)"$/
+      find_movies_by_director_path(Movie.find_by_title($1).id)
+      
     else
       begin
         page_name =~ /^the (.*) page$/
